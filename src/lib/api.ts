@@ -30,6 +30,7 @@ export const api = {
   },
   tasks: {
     listByList: (listId: string) => request<Task[]>(`/lists/${listId}/tasks`),
+    snooze: (taskId: string) => request<Task>(`/tasks/${taskId}/snooze`, { method: "POST" }),
   },
   activity: {
     listByTask: (taskId: string, since: string) =>
