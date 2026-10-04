@@ -7,7 +7,8 @@ directory exists only on `main` and never appears in the PR diff.
 ## Before the call
 
 - [ ] PR is open on GitHub, description pasted from `02-pr-description.md`.
-- [ ] You have the PR link ready to paste into chat at minute 5.
+- [ ] PR "Files changed" tab open in a browser window you can share. Use a
+      wide window; the candidate reads from your screen.
 - [ ] A blank scratch doc is open and ready to share (for the dictated brief).
 - [ ] `04-rubric.md` copied to a fresh file named after the candidate.
 - [ ] `.interviewer/stretch/` open in an editor tab in case you need the extras.
@@ -30,7 +31,8 @@ directory exists only on `main` and never appears in the PR diff.
 > agent, and I'll type it word for word so we can both look at it. Then a few
 > short scenarios, then time for your questions."
 
-Confirm they can see your screen.
+Confirm they can see your screen and read the diff text comfortably. Zoom
+the browser to 125% or more.
 
 ## 5–25 Review
 
@@ -44,9 +46,12 @@ Reveal in this order. The pauses are where the "asks before judging" signal live
 2. **Minute 8 at the latest: PR description.** Show the PR page, scrolled so
    only the description is visible. "Here's what the agent said it did."
    Wait again. Do they question any claim?
-3. **Then: paste the PR link.** "Have a scroll yourself. Tell me where you
-   want to start and talk me through what you see." You keep your screen on
-   the PR too and follow where they direct.
+3. **Then: open Files changed.** "You're driving, I'm scrolling. Tell me
+   which file to open and when to move on, and talk me through what you
+   see." Go where they say, at their pace. Don't linger on a file they
+   haven't asked for, and don't scroll past something they're still reading.
+   If they ask "what else is in there?", read out the file list; that's
+   information they'd have anyway.
 
 Nudges in `06-nudges.md`. Log every nudge used.
 
