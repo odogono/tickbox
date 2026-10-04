@@ -12,12 +12,12 @@ oversells.
 
 | # | Category | File | What to look for | Rubric |
 |---|----------|------|------------------|--------|
-| 1 | Real bug | `src/hooks/use-task-activity.ts` | `const since = new Date(Date.now() - WEEK).toISOString()` sits at **module scope**, so the 7-day window is fixed at the moment the module first loads. A tab left open over the weekend shows a window that no longer ends at "now", and refetches return the same range. Fix: compute inside the hook or the queryFn, and consider making the window part of the query key (rounded, so it doesn't thrash). | 2 |
+| 1 | Real bug | `src/hooks/use-task-activity.ts` | `const since = new Date(Date.now() - WEEK).toISOString()` sits at **module scope**, with a comment above it saying so ("computed once when the module loads"), so the 7-day window is fixed at the moment the module first loads. A tab left open over the weekend shows a window that no longer ends at "now", and refetches return the same range. Fix: compute inside the hook or the queryFn, and consider making the window part of the query key (rounded, so it doesn't thrash). | 2 |
 | 2 | Spec deviation (easy) | `src/components/tasks/snooze-button.tsx` (TODO comment), `server/index.ts` (`/snooze` handler), `server/store.ts` (`snoozedTasks`) | A TODO comment in the button says outright: "expiry is not implemented". The server confirms it: snooze adds the id to a `Set`, which has no timestamp. The ticket's second sentence, "come back on their own after an hour", is missing, and the PR description says "Snooze implemented end to end" anyway. Finding the TODO is the floor; noticing the description contradicts it is the signal. | 2, 4 |
 | 3 | Scope creep | `src/components/tasks/task-list.tsx` | Column heading renamed ("Task" to "Title") and an "Updated" column added with a relative-time formatter. Nobody asked. Harmless but should be a separate change or at least called out and agreed. The strong answer is "I'd ask why, and probably ask for it to be split out", not "this is wrong". | 3 |
 | 4 | Structural | `src/hooks/use-task-activity.ts`, `src/components/tasks/activity-sparkline.tsx` | The new hook sits right next to `use-tasks.ts` and breaks all three of its conventions: key is `["activity", taskId]` (outside `CacheKeys.all`, so shared invalidation misses it), no `enabled` gate on authentication, and the sparkline renders a loading state but **no error state**: on failure `activity.data` is undefined and the component silently shows "No activity in last 7 days", which is a lie. Compare with `useTasks` and the README conventions. Also worth a mention: one query per row, so a 40-task list fires 40 requests. | 2 |
 | 5 | Unverified claim | PR description vs `src/__tests__/activity-sparkline.test.tsx` | Description: "Added tests for snooze and chart windowing; all passing." The only new test renders `SparklineChart` with an empty events array and checks the empty-state text. The existing TaskList test was only wrapped in a `QueryClientProvider`. Nothing tests snoozing, nothing tests the window. "All passing" is true and irrelevant. A strong candidate opens the test file *because* of the claim. | 4 |
-| 6 | Red herring | `src/components/tasks/activity-sparkline.tsx` | `useMemo` around the events-to-daily-buckets transform. Cheap, correct, dependency array is right. A candidate who flags this as "premature optimisation" or "unnecessary" is pattern-matching rather than reading. Letting it go, or saying "fine, wouldn't block on it", is the right call. | 3 |
+| 6 | Red herring | `src/components/tasks/activity-sparkline.tsx` | The chart is a fixed `width={120} height={28}` rather than a `ResponsiveContainer`, and the PR notes say why: rows stay the same height. Correct for a table cell. A candidate who insists it "should be responsive" is pattern-matching rather than reading. Letting it go is the right call. The bucketing loop runs inline on every render; that is also fine at this size. | 3 |
 | 7 | Server authorisation | `server/index.ts` (`POST /tasks/:id/snooze`) | The handler authenticates the caller (401 if no user) but never checks the task belongs to a list the caller is on. Every other endpoint in the same file does the check. Ana can snooze a task on Ben's Home renovation list. Front-end candidates may not spot this cold; the nudge at minute 14 points them at the file, not the bug. | 2 |
 
 ## Diff shape
@@ -26,12 +26,11 @@ oversells.
 
 ## Things that are deliberately fine
 
-- The `useMemo` (item 6). `Date.now()` inside it recomputes on every refetch
-  because the events array is new each time; the drift is bounded by
-  `staleTime` and not worth raising.
+- The fixed-size chart (item 6).
+- The bucketing loop running on every render with no `useMemo`. Seven
+  buckets over a few dozen events; memoising it would be noise.
 - `staleTime` on the activity query.
 - The `Snoozed` badge styling and the `snoozed` status value being added to the type.
-- Recharts `ResponsiveContainer` not used (fixed width is intentional for a table cell).
 
 ## Ticket ambiguities a strong candidate asks about (criterion 1)
 

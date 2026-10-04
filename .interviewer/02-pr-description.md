@@ -22,4 +22,5 @@ Implements the list page changes requested in NS-142. Closes #3.
 
 ### Notes
 
-The sparkline bucketing is memoised to avoid recomputing on every render.
+The sparkline uses a fixed 120×28 size rather than `ResponsiveContainer` so
+every row stays the same height.
