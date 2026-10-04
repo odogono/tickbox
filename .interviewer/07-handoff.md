@@ -4,8 +4,9 @@ One-time setup. Repo must be **private**.
 
 ```sh
 cd ~/work/omega/interview-fixture
-gh repo create <org-or-user>/tickbox --private --source=. --remote=origin --push
-git push -u origin agent/NS-142-task-chart-snooze
+# Repo exists: https://github.com/odogono/tickbox (private)
+git push --force-with-lease -u origin main
+git push --force-with-lease -u origin agent/NS-142-task-chart-snooze
 gh pr create --base main --head agent/NS-142-task-chart-snooze \
   --title "NS-142: Task activity sparkline and snooze" \
   --body-file .interviewer/02-pr-description.md
