@@ -1,10 +1,19 @@
 import { ActivitySparkline } from "@/components/tasks/activity-sparkline";
+import { SnoozeButton } from "@/components/tasks/snooze-button";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { Task } from "@/lib/types";
 
 export interface TaskListProps {
   tasks: Task[];
+}
+
+function formatUpdated(iso: string): string {
+  const minutes = Math.round((Date.now() - Date.parse(iso)) / 60_000);
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes} min ago`;
+  const hours = Math.round(minutes / 60);
+  return hours < 48 ? `${hours} h ago` : `${Math.round(hours / 24)} d ago`;
 }
 
 export function TaskList({ tasks }: TaskListProps) {
@@ -16,9 +25,11 @@ export function TaskList({ tasks }: TaskListProps) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Task</TableHead>
+          <TableHead>Title</TableHead>
           <TableHead>Priority</TableHead>
+          <TableHead>Updated</TableHead>
           <TableHead>Status</TableHead>
+          <TableHead />
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -31,8 +42,12 @@ export function TaskList({ tasks }: TaskListProps) {
               </div>
             </TableCell>
             <TableCell>{task.priority}</TableCell>
+            <TableCell className="muted">{formatUpdated(task.updatedAt)}</TableCell>
             <TableCell>
               <StatusBadge status={task.status} />
+            </TableCell>
+            <TableCell>
+              <SnoozeButton task={task} />
             </TableCell>
           </TableRow>
         ))}
