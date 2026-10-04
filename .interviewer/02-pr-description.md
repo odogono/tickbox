@@ -1,6 +1,6 @@
 ## NS-142: Task activity sparkline and snooze
 
-Implements the list page changes requested in NS-142.
+Implements the list page changes requested in NS-142. Closes #3.
 
 ### What changed
 

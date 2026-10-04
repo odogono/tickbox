@@ -8,4 +8,6 @@ tasks should come back on their own after an hour.
 
 ---
 
-Paste only the two sentences above into the scratch doc. Do not show this file.
+The ticket is filed as https://github.com/odogono/tickbox/issues/3 with exactly
+the two sentences above and nothing else. Show the issue page, not this file.
+If the issue is ever lost, recreate it with only those two sentences.

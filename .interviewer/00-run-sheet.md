@@ -7,6 +7,7 @@ directory exists only on `main` and never appears in the PR diff.
 ## Before the call
 
 - [ ] PR is open on GitHub, description pasted from `02-pr-description.md`.
+- [ ] Issue #3 open in one browser tab (the ticket).
 - [ ] PR "Files changed" tab open in a browser window you can share. Use a
       wide window; the candidate reads from your screen.
 - [ ] A blank scratch doc is open and ready to share (for the dictated brief).
@@ -39,8 +40,8 @@ the browser to 125% or more.
 
 Reveal in this order. The pauses are where the "asks before judging" signal lives.
 
-1. **Minute 5: ticket alone.** Show `01-ticket.md` contents (paste it into the
-   scratch doc, not the file itself). Alongside it show
+1. **Minute 5: ticket alone.** Show the ticket as GitHub issue #3
+   (https://github.com/odogono/tickbox/issues/3). Alongside it show
    `images/01-before-list-page.png` ("this is the list page today") and
    `images/02-ticket-sketch.png` ("and this is the sketch the product owner
    attached"). Say: "Here's the ticket as it came in." Then wait. Count silently to ten before saying anything. If they want to

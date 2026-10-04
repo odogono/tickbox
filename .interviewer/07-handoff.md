@@ -16,6 +16,8 @@ gh pr create --base main --head agent/NS-142-task-chart-snooze \
 
 Then:
 
+0. The ticket is issue #3 and the PR description says "Closes #3". If you
+   ever recreate either, keep that link.
 0. Edit the PR description on GitHub and drag `images/03-after-list-page.png`
    in under "What changed", as the agent's screenshot. Optionally add
    `04-after-snoozed.png` too. The images live only on `main`, so dragging
