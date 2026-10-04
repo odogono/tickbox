@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "bun run server & vite",
+    "client": "vite",
     "server": "bun run server/index.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "bun test",

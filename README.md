@@ -21,8 +21,9 @@ tasks, backed by an in-memory API.
 ```sh
 bun install
 bun run check      # typecheck + tests
-bun run server     # API on :4100
-bun run dev        # Vite on :5173, proxies /api to the server
+bun dev            # API on :4100 plus Vite on :5173 (proxies /api)
+bun run server     # API only
+bun run client     # Vite only, if the API is already running
 ```
 
 The demo user is Ana, who is on Groceries and Work but not Home renovation.
