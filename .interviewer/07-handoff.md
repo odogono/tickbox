@@ -7,6 +7,8 @@ cd ~/work/omega/interview-fixture
 # Repo exists: https://github.com/odogono/tickbox (private)
 git push --force-with-lease -u origin main
 git push --force-with-lease -u origin agent/NS-142-task-chart-snooze
+# PR is open: https://github.com/odogono/tickbox/pull/2 (PR #1 was closed by the force push).
+# Only needed again if the branch history is rewritten:
 gh pr create --base main --head agent/NS-142-task-chart-snooze \
   --title "NS-142: Task activity sparkline and snooze" \
   --body-file .interviewer/02-pr-description.md
