@@ -13,6 +13,10 @@ gh pr create --base main --head agent/NS-142-task-chart-snooze \
 
 Then:
 
+0. Edit the PR description on GitHub and drag `images/03-after-list-page.png`
+   in under "What changed", as the agent's screenshot. Optionally add
+   `04-after-snoozed.png` too. The images live only on `main`, so dragging
+   them in is the only way they reach the PR.
 1. Open the PR in an incognito window to confirm the description renders and
    `.interviewer/` is nowhere in "Files changed". It isn't in the three-dot
    diff, but check once.
@@ -37,3 +41,19 @@ curl -s -w ' %{http_code}\n' -X POST localhost:4199/api/tasks/task-r1/snooze -H 
 
 Nothing to reset. The PR is read-only for them and the server is in-memory.
 Candidates never touch the repo, so there is nothing to clean up.
+
+## Images
+
+`images/` holds screenshots taken from the running app at 1000px wide, 2x:
+
+| File | Shows | When |
+|---|---|---|
+| `00-before-home.png` | Lists index on `main` | Orientation, if asked what the app is |
+| `01-before-list-page.png` | Groceries list page on `main` | With the ticket, minute 5 |
+| `02-ticket-sketch.png` | Product owner's sketch of the ask | With the ticket, minute 5 |
+| `03-after-list-page.png` | Same page on the agent branch | In the PR description, minute 8 |
+| `04-after-snoozed.png` | After clicking Snooze | Optional, in the PR description |
+
+To regenerate after a change: run `bun run server` and `bun run dev` on the
+branch you want, then screenshot `/lists/list-groceries` with any headless
+browser. The sketch is `mockup/ticket-sketch.html`, a static page.

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>NS-142 sketch</title>
+<style>
+:root { font-family: system-ui, sans-serif; color: #1a1a1a; background: #fafafa; }
+.app { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+.app-header { margin-bottom: 1.5rem; font-weight: 600; color: #1a56c4; }
+.card { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; }
+.card-header { padding: 1rem 1.25rem; border-bottom: 1px solid #eee; }
+.card-title { margin: 0; font-size: 1.1rem; }
+.card-content { padding: 1rem 1.25rem; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #f0f0f0; }
+.badge { padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.8rem; }
+.badge-open { background: #e8f0fe; color: #1a56c4; }
+.badge-overdue { background: #fce8e6; color: #c5221f; }
+.badge-done { background: #e6f4ea; color: #137333; }
+.title-cell { display: flex; align-items: center; gap: 0.75rem; }
+/* sketch elements */
+.sk { font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", cursive; color: #c0392b; }
+.sk-box { display: inline-block; width: 120px; height: 28px; border: 2px dashed #c0392b; border-radius: 3px; position: relative; font-size: 0.7rem; line-height: 24px; text-align: center; }
+.sk-btn { display: inline-block; border: 2px dashed #c0392b; border-radius: 6px; padding: 0.2rem 0.6rem; font-size: 0.85rem; }
+.note { position: absolute; font-size: 1rem; line-height: 1.25; max-width: 260px; }
+.note svg { position: absolute; overflow: visible; }
+.wrap { position: relative; }
+</style></head><body>
+<div class="app wrap">
+  <header class="app-header">Tickbox</header>
+  <div class="card">
+    <div class="card-header"><h2 class="card-title">Tasks</h2></div>
+    <div class="card-content">
+      <table class="table">
+        <thead><tr><th>Task</th><th>Priority</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td><div class="title-cell"><span>Buy milk</span><span class="sk sk-box">chart?</span></div></td><td>normal</td><td><span class="badge badge-open">Open</span></td><td></td></tr>
+          <tr><td><div class="title-cell"><span>Return library books</span><span class="sk sk-box">chart?</span></div></td><td>high</td><td><span class="badge badge-overdue">Overdue</span></td><td><span class="sk sk-btn">Snooze</span></td></tr>
+          <tr><td><div class="title-cell"><span>Order cat food</span><span class="sk sk-box">chart?</span></div></td><td>low</td><td><span class="badge badge-done">Done</span></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <svg style="position:absolute; left:0; top:0; pointer-events:none; overflow:visible" width="1000" height="500">
+    <path d="M190,392 C 200,370 215,345 240,322" stroke="#c0392b" stroke-width="2" fill="none"/>
+    <path d="M240,322 l-7,2 l5,5" stroke="#c0392b" stroke-width="2" fill="none"/>
+    <path d="M760,392 C 790,350 820,310 845,275" stroke="#c0392b" stroke-width="2" fill="none"/>
+    <path d="M845,275 l-7,2 l5,5" stroke="#c0392b" stroke-width="2" fill="none"/>
+  </svg>
+  <div class="note sk" style="left: 70px; top: 396px;">last 7 days of activity,<br>small, next to the title</div>
+  <div class="note sk" style="left: 590px; top: 396px;">snooze from here, comes<br>back on its own after an hour</div>
+</div>
+</body></html>

@@ -12,6 +12,7 @@ directory exists only on `main` and never appears in the PR diff.
 - [ ] A blank scratch doc is open and ready to share (for the dictated brief).
 - [ ] `04-rubric.md` copied to a fresh file named after the candidate.
 - [ ] `.interviewer/stretch/` open in an editor tab in case you need the extras.
+- [ ] `.interviewer/images/` open in a viewer: before, sketch, after.
 - [ ] Timer visible to you only.
 
 ## 0–5 Orientation (say roughly this)
@@ -39,13 +40,17 @@ the browser to 125% or more.
 Reveal in this order. The pauses are where the "asks before judging" signal lives.
 
 1. **Minute 5: ticket alone.** Show `01-ticket.md` contents (paste it into the
-   scratch doc, not the file itself). Say: "Here's the ticket as it came in."
-   Then wait. Count silently to ten before saying anything. If they want to
+   scratch doc, not the file itself). Alongside it show
+   `images/01-before-list-page.png` ("this is the list page today") and
+   `images/02-ticket-sketch.png` ("and this is the sketch the product owner
+   attached"). Say: "Here's the ticket as it came in." Then wait. Count silently to ten before saying anything. If they want to
    go straight to code, let them, and note it.
    Product-owner answers to likely questions are at the bottom of this sheet.
 2. **Minute 8 at the latest: PR description.** Show the PR page, scrolled so
-   only the description is visible. "Here's what the agent said it did."
-   Wait again. Do they question any claim?
+   only the description is visible, with `images/03-after-list-page.png`
+   embedded in it as the agent's screenshot. "Here's what the agent said it
+   did." Wait again. Do they question any claim? Do they notice the
+   screenshot shows a column nobody asked for?
 3. **Then: open Files changed.** "You're driving, I'm scrolling. Tell me
    which file to open and when to move on, and talk me through what you
    see." Go where they say, at their pace. Don't linger on a file they
