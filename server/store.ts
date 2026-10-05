@@ -32,6 +32,9 @@ export const activity: ActivityEvent[] = tasks.flatMap((task, t) =>
   }).sort((a, b) => a.at.localeCompare(b.at)),
 );
 
+/** Tasks a member has snoozed. */
+export const snoozedTasks = new Set<string>();
+
 export function findUser(id: string | null): User | undefined {
   return users.find((u) => u.id === id);
 }

@@ -10,9 +10,12 @@
 .badge { padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.8rem; }
 .badge-open { background: #e8f0fe; color: #1a56c4; }
 .badge-overdue { background: #fce8e6; color: #c5221f; }
+.badge-snoozed { background: #fef7e0; color: #b06000; }
 .badge-done { background: #e6f4ea; color: #137333; }
 .btn { border: 1px solid #ccc; border-radius: 6px; background: #fff; padding: 0.35rem 0.75rem; cursor: pointer; }
 .btn-sm { padding: 0.2rem 0.5rem; font-size: 0.85rem; }
 .btn:disabled { opacity: 0.5; cursor: default; }
 .muted { color: #666; }
 .error { color: #c5221f; }
+.task-title-cell { display: flex; align-items: center; gap: 0.75rem; }
+.sparkline-placeholder { font-size: 0.8rem; }

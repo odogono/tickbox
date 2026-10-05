@@ -3,6 +3,7 @@ import type { TaskStatus } from "@/lib/types";
 const LABELS: Record<TaskStatus, string> = {
   open: "Open",
   overdue: "Overdue",
+  snoozed: "Snoozed",
   done: "Done",
 };
 
